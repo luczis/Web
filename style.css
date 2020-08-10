@@ -329,7 +329,7 @@ div.linkable::before {
 .post_text {
 	display: grid;
 	grid-template-columns: auto;
-	grid-template-rows: 2em auto;
+	grid-template-rows: 3em auto;
 	overflow: hidden;
 }
 /*----SIDEBAR----*/
@@ -351,17 +351,19 @@ div.linkable::before {
 	left: 10%;
 	height: 1.5em;
 	width: 80%;
-	background-image: linear-gradient(90deg, red, red, yellow, green, green);
+	background-image: linear-gradient(90deg, #700, #700, #770, #070, #070);
 	border-width: 0.1em;
-	border-color: #06c;
+	border-color: #06C;
 	border-style: solid;
 	border-radius: 1em;
 	margin-bottom: 0.5em;
 }
 .disp_text {
+	margin-top: 0.2em;
+	font-size: 0.8em;
 	position: relative;
 	top: 20%;
-	color: black;
+	color: white;
 	font-family: monospace;
 	font-weight: bold;
 }
@@ -582,7 +584,7 @@ div.linkable::before {
 	text-align: center;
 }
 
-/* Smartphones */
+/* SMARTPHONE */
 @media (max-width:801px){
 	:root {
 		--side-margin: 5%;
@@ -615,23 +617,20 @@ div.linkable::before {
 		grid-template-rows: 10em auto;
 		max-height: none;
 	}
-	#port_box {
-		display: block;
-	}
-	.port_item {
-		height: 20em;
-	}
-	.port_text_back{
-		opacity: 1;
-	}
+	.post_text{display: block;}
+
+	/*----PORTFOLIO----*/
+	#port_box {display: block;}
+	.port_item {height: 20em;}
+	.port_text_back{opacity: 1;}
 	.port_text {
 		top: 0%;
 		vertical-align: middle;
 	}
-	#about_box {
-		display: block;
-	}	
+
+	/*----ABOUT----*/
+	#about_box {display: block;}	
 }
-/* Desktops */
+/* DESKTOP */
 @media (max-width:1281px){
 }
