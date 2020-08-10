@@ -15,8 +15,8 @@
 	--slider-width: 1000px;
 
 	--slide-shadow-color: rgba(36,55,21,0.7);
-	--slide-switch-on-color: white;
-	--slide-switch-off-color: black;
+	--slide-switch-on-color: #fff;
+	--slide-switch-off-color: #000;
 
 	--posts-back-color: var(--color-1);
 	--body-back-color: var(--color-3);
@@ -42,7 +42,6 @@ body{
 	color: white;
 	padding-top: 2em;
 }
-
 #top_bar {
 	white-space: nowrap;
 	position: absolute;
@@ -55,15 +54,13 @@ body{
 	background-color: var(--topbar-back-color);
 	color: var(--topbar-text-color);
 	font-family: Helvetica, monospace;
-	box-shadow: 0.1em 0.1em 0.1em #555;
+	box-shadow: 0em 0.1em 0.1em #555;
 }
-
 #navigation {
 	display: grid;
 	grid-template-columns: auto auto auto auto 1fr auto auto auto;
-	margin:0.5em;
+	margin: 0.5em 0 0.5em 0;
 }
-
 .nav_button {
 	margin: auto;
 	padding: 0 0.5em 0 0.5em;
@@ -71,7 +68,6 @@ body{
 	color: var(--topbar-text-color);
 	text-decoration: none;
 }
-
 div.linkable::before {
 	display: block;
 	content: " ";
@@ -80,16 +76,14 @@ div.linkable::before {
 	height: 2em;
 	visibility: hidden;
 }
-
 #idiomas {
 	position: relative;
 	top: -0.1em;
 	text-align: right;
-	padding: 0 0.5em 0 0.5em;
+	padding: 0;
 	display: grid;
 	grid-template-columns: auto auto;
 }
-	
 .lang_icon {
 	display: block;
 	width: calc(1em/0.7);
@@ -97,23 +91,19 @@ div.linkable::before {
 	margin: 0 0.2em 0 0.2em;
 	border-style: solid;
 	border-width: 0.1em;
-	border-color: #FC0;
+	border-color: #ffcc00;
 	border-radius: 20%;
 	background-size: cover;
 }
-
 .lang_icon:hover {
-	border-color: #FFF;
+	border-color: #ffffff;
 }
-
 .pt_br_icon {
 	background-image: url(images/flags/pt_br.svg);
 }
-
 .en_us_icon {
 	background-image: url(images/flags/en_us.svg);
 }
-
 .section_title {
 	text-align: center;
 	color: var(--section-title-color);
@@ -586,7 +576,7 @@ div.linkable::before {
 
 /*----COPYLEFT----*/
 #copyleft {
-	padding: 1em;
+	padding: 1em 0 1em 0;
 	width: 100%;
 	background-color: var(--copyleft-back-color);
 	text-align: center;
