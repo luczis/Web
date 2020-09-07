@@ -6,6 +6,12 @@ switch($lang):
 			case "title":
 				echo "Personal Website";
 				break;
+			case "description":
+				echo "Lucas Zischler portifolio, Electrical Engineering student at UTFPR";
+				break;
+			case "keywords":
+				echo "Lucas Zischler, Electrical Engineering, UTFPR, Portifolio, Personal website";
+				break;
 			case "home":
 				echo "HOME";
 				break;
@@ -33,6 +39,12 @@ switch($lang):
 			case "title":
 				echo "Site Pessoal";
 				break;
+			case "description":
+				echo "Portifólio do Lucas Zischler, estudante de Engenharia Elétrica pela Universidade Tecnológica Federal do Paraná";
+				break;
+			case "keywords":
+				echo "Lucas Zischler, Engenharia Elétrica, UTFPR, Portifólio, Site pessoal";
+				break;
 			case "home":
 				echo "INÍCIO";
 				break;
@@ -49,7 +61,7 @@ switch($lang):
 				echo "CONTATO";
 				break;
 			case "lang":
-				echo "IDIOMAS";
+				echo "IDIOMA";
 				break;
 			default:
 				break;
