@@ -39,11 +39,23 @@ switch($lang):
 			case "about":
 				echo "About";
 				break;
+			case "biography":
+				echo "Biography";
+				break;
+			case "institutions":
+				echo "Institutions";
+				break;
 			case "cont":
 				echo "Contact";
 				break;
 			case "number":
 				echo "Phone";
+				break;
+			case "copyleft-name":
+				echo "Lucas Zischler, Personal Website";
+				break;
+			case "copyleft-notice":
+				echo "Copyleft: This is a free work, you can copy, distribute, and modify it under the terms of the <a href=\"http://artlibre.org/licence/lal/en/\">Free Art License</a>";
 				break;
 			default:
 				break;
@@ -87,11 +99,23 @@ switch($lang):
 			case "about":
 				echo "Sobre";
 				break;
+			case "biography":
+				echo "Biografía";
+				break;
+			case "institutions":
+				echo "Instituições";
+				break;
 			case "cont":
 				echo "Contato";
 				break;
 			case "number":
 				echo "Telefone";
+				break;
+			case "copyleft-name":
+				echo "Lucas Zischler, Site Pessoal";
+				break;
+			case "copyleft-notice":
+				echo "Copyleft: Esta obra é livre, você pode copiar, compartilhar e modificar sob os termos da <a href=\"http://artlibre.org/licence/lal/en/\">Licença da Arte Livre</a>";
 				break;
 			default:
 				break;
