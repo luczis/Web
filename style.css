@@ -2,13 +2,16 @@
 /* Desenvolvido e mantido por Lucas Zischler :) */
 
 :root {
-	--color-2: #323D14;
-	--color-1: #1E230E;
-	--color-3: #050A04;
+	--color-2: #141414;
+	--color-1: #1D3648;
+	--color-3: #12212B;
 	
-	--topbar-text-color: #81A40B;;
+	--topbar-text-color: #FF0;
 	--org-text-color: #ccc;
-	--section-title-color: #81A40B;
+	--section-title-color: #46C9F1;
+	--body-text-color: white;
+	--shadow-text-color: white;
+	--copyleft-text-color: var(--body-text-color);
 
 	--side-margin: 2%;
 	--slider-height: 700px;
@@ -16,8 +19,8 @@
 
 	--postpage-max-image-width: 1000px;
 
-	--slide-shadow-color: rgba(36,55,21,0.7);
-	--slide-switch-on-color: #fff;
+	--slide-shadow-color: rgba(127, 127, 0, 0.58);
+	--slide-switch-on-color: #11e9ff;
 	--slide-switch-off-color: #000;
 
 	--posts-back-color: var(--color-1);
@@ -41,7 +44,7 @@ body {
 	font-size: 16px;
 	min-width: 200px;
 	background-color: var(--body-back-color);
-	color: white;
+	color: var(--body-text-color);
 	padding-top: 2em;
 }
 a:link {
@@ -84,8 +87,8 @@ div.linkable::before {
 	display: block;
 	content: " ";
 	position relative;
-	margin-top: -2em;
-	height: 2em;
+	margin-top: -20em;
+	height: 20em;
 	visibility: hidden;
 }
 #idiomas {
@@ -265,6 +268,7 @@ div.linkable::before {
 	margin: 0 var(--side-margin) 0 var(--side-margin);
 	font-family: Helvetica, monospace;
 	background-color: var(--donate-back-color);
+	border-radius: 1em;
 }
 
 #organizations {
@@ -274,7 +278,7 @@ div.linkable::before {
 	margin: 2%;
 }
 .org {
-	color: var(--org-text-color);
+	color: var(--body-text-color);
 	text-align: center;
 	display: grid;
 	grid-gap: 1%;
@@ -338,6 +342,7 @@ div.linkable::before {
 }
 /*----POSTS----*/
 #posts {
+	border-radius: 1em;
 	padding: 0 1em 0 1em;
 	margin: 1em var(--side-margin) 1em var(--side-margin);
 	font-family: Helvetica, monospace;
@@ -362,6 +367,7 @@ div.linkable::before {
 	grid-template-rows: 25% 25% 25% 25%;
 }
 .post_item {
+	color: var(--body-text-color);
 	margin: 0.5em;
 	display: grid;
 	grid-gap: 0.5em;
@@ -385,6 +391,7 @@ div.linkable::before {
 }
 /*----SIDEBAR----*/
 #sidebar_info {
+	border-radius: 1em;
 	margin: 1em;
 	padding: 1em;
 	display: grid;
@@ -436,6 +443,7 @@ div.linkable::before {
 
 /*----PORTIFOLIO----*/
 #portifolio {
+	border-radius: 1em;
 	padding: 0 1em 1em 1em;
 	margin: 1em var(--side-margin) 1em var(--side-margin);
 	font-family: Helvetica, monospace;
@@ -456,6 +464,7 @@ div.linkable::before {
 	transition-timing-function: ease-out;
 }
 .port_text_back {
+	color: var(--shadow-text-color);
 	transition: 1s;
 	opacity: 0.2;
 	position: absolute;
@@ -484,6 +493,7 @@ div.linkable::before {
 
 /*----ABOUT----*/
 #about {
+	border-radius: 1em;
 	padding: 0 1em 1em 1em;
 	margin: 1em var(--side-margin) 1em var(--side-margin);
 	font-family: Helvetica, monospace;
@@ -495,6 +505,11 @@ div.linkable::before {
 #about_box {
 	display: grid;
 	grid-template-columns: 25em auto;
+}
+#profile_info {
+	background: var(--color-2);
+	margin-top: 1em;
+	border-radius: 1em;
 }
 #pf_pic_droid_box {
 	margin: auto;
@@ -596,10 +611,10 @@ div.linkable::before {
 	height: 4em;
 	background-size: cover;
 	transition: 0.5s;
-	filter: invert(1);
+	filter: invert(0.6);
 }
 .third_party_ref:hover {
-	filter: invert(0);
+	filter: invert(1) blur(0.5px);
 }
 #about_text {
 	margin: 0 2em 2em 2em;
@@ -616,6 +631,7 @@ div.linkable::before {
 
 /*----CONTATO----*/
 #contato {
+	border-radius: 1em;
 	padding: 0 1em 1em 1em;
 	margin: 1em var(--side-margin) 1em var(--side-margin);
 	font-family: Helvetica, monospace;
@@ -631,6 +647,7 @@ div.linkable::before {
 
 /*----COPYLEFT----*/
 #copyleft {
+	color: var(--copyleft-text-color);
 	padding: 1em 0 1em 0;
 	width: 100%;
 	background-color: var(--copyleft-back-color);
@@ -641,7 +658,7 @@ div.linkable::before {
 @media (max-width:801px){
 	:root {
 		--side-margin: 5%;
-		--slider-height: 400px;
+		--slider-height: 600px;
 		--slider-width: 90%;
 	}
 
@@ -651,10 +668,14 @@ div.linkable::before {
 	.slider .legend {
 		border: 0;
 		background-color: var(--slide-shadow-color);
-		height: 240px;
+		height: 350px;
 		width: 100%;
 	}
-	.slider .content-txt {width: 90%;}
+	.slider .content-txt {
+		color: var(--shadow-text-color);
+		height: 240px;
+		width: 90%;
+	}
 
 	/*----DONATE----*/
 	.hide_if_small {display: none;}
