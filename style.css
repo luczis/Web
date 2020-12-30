@@ -501,6 +501,7 @@ div.linkable::before {
 	display: grid;
 	grid-template-columns: auto;
 	grid-template-rows: auto auto auto;
+	clip-path: circle(100%);
 }
 #about_box {
 	display: grid;
@@ -550,6 +551,10 @@ div.linkable::before {
 	z-index: 0;
 	transition: 2s;
 }
+#pic0 {
+	background: url(images/profile/pixel.png);
+	background-size: 100%;
+}
 #pic1 {
 	background: url(images/profile/p1.png);
 	background-size: 100%;
@@ -575,10 +580,16 @@ div.linkable::before {
 	background-size: 100%;
 }
 @media (hover:hover) and (pointer:fine) {
-	#pf_pic_box:hover {cursor:help;}
+	/*#pf_pic_box:hover {cursor:help;}
 	#pf_pic_box:hover > #pic3 {transform: translate(-10%, 5%);}
 	#pf_pic_box:hover > #pic4 {transform: translate(-10%, 10%);}
-	#pf_pic_box:hover > #pic5 {transform: translate(-10%, 5%);}
+	#pf_pic_box:hover > #pic5 {transform: translate(-10%, 5%);}*/
+	#pf_pic_box:hover > #pic1 {filter: opacity(0%);}
+	#pf_pic_box:hover > #pic2 {filter: opacity(0%);}
+	#pf_pic_box:hover > #pic3 {filter: opacity(0%);}
+	#pf_pic_box:hover > #pic4 {filter: opacity(0%);}
+	#pf_pic_box:hover > #pic5 {filter: opacity(0%);}
+	#pf_pic_box:hover > #pic6 {filter: opacity(0%);}
 }
 @media (pointer:coarse) and (any-pointer:coarse) {
 	#pf_pic_box:hover {cursor:help;}
@@ -695,6 +706,8 @@ div.linkable::before {
 	.post_text {
 		display: block;
 	}
+  
+	/*----PORTIFOLIO----*/
 	#port_box {
 		display: block;
 	}
@@ -708,9 +721,13 @@ div.linkable::before {
 		top: 0%;
 		vertical-align: middle;
 	}
+	/*----ABOUT----*/
 	#about_box {
 		display: block;
 	}	
+	#profile_info {
+		padding: 1em 0 1em 0;
+	}
 }
 /* Desktops */
 @media (max-width:1281px){

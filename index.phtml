@@ -37,6 +37,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" href="images/favicon/favicon.svg">
 		<link rel="alternate icon" href="images/favicon/favicon.png">
+		<script src="js/easter_egg.js"></script>
 	</head>
 	<body>
 	<main>
@@ -296,7 +297,16 @@
 					<div id="profile_info">
 						<h2 class="section_title"><?php $position="about"; include "php/getBody.php"; ?></h2>
 						<div id="pf_pic_droid_box">
-							<div id="pf_pic_box">
+							<noscript>
+								<style>
+									#pic0 {
+										background: url(images/profile/enable_js.png) !important;
+										background-size: 100% !important;
+									}
+								</style>
+							</noscript>
+							<div id="pf_pic_box" onclick="setEasterEgg()">
+								<div id="pic0" class="pf_pic"></div>
 								<div id="pic1" class="pf_pic"></div>
 								<div id="pic2" class="pf_pic"></div>
 								<div id="pic3" class="pf_pic"></div>
@@ -328,6 +338,7 @@
 						</div>
 					</div>
 				</div>
+				<canvas id="easter_egg_canvas" width="800" height="640" style="display: none; margin: 1em auto 1em auto; background: #FFF;"></canvas>
 			</div>
 			<div class="linkable" id="contato">
 				<h2 class="section_title"><?php $position="cont"; include "php/getBody.php"; ?></h2>
