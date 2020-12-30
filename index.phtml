@@ -4,8 +4,24 @@
 	<head>
 		<?php 
 			$lang=$_GET["lang"];
-			if(!empty($lang)) {
-				$pastGET="?lang=" . $lang;
+			$postnum=$_GET["postnum"];
+			$pastGET="?";
+			if(isset($lang)) {
+				if(!(strcmp($lang,"en_us") or strcmp($lang,"pt_br"))) {
+					$lang="pt_br";
+				}
+				if($lang !== "pt_br") {
+					$postLang= "." . $lang;
+				}
+				$langGET= "&lang=" . $lang;
+				$pastGET=$pastGET . "&lang=" . $lang;
+			}
+			if(isset($postnum)) {
+				if(!is_numeric($postnum)) {
+					$postnum = 0;
+				}
+				$postnumGET= "&postnum=" . $postnum;
+				$pastGET=$pastGET . "&postnum=" . $postnum;
 			}
 			$maxquotes=parse_ini_file("base.ini",true)["quotes"]["count"];
 			$quote=rand(0,$maxquotes-1);
@@ -16,11 +32,12 @@
 		<title>Lucas Zischler: <?php $position="title"; include "php/getHead.php"; ?></title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<meta name="author" content="Lucas Zischler">
-		<meta name="description" content="Portifolio do Lucas Zischler, estudante de Engenharia Elétrica pela Universidade Tecnológica Federal do Paraná">	
-		<meta name"keywords" content="Lucas Zischler, Engenharia Elétrica, UTFPR, Portifolio, Site pessoal">
+		<meta name="description" content="<?php $position="description"; include "php/getHead.php"; ?>">	
+		<meta name"keywords" content="<?php $position="keywords"; include "php/getHead.php"; ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" href="images/favicon/favicon.svg">
 		<link rel="alternate icon" href="images/favicon/favicon.png">
+		<script src="js/easter_egg.js"></script>
 	</head>
 	<body>
 	<main>
@@ -47,46 +64,46 @@
 				<div id="slider">
 					<div id="slider_box_text" class="slider_box">
 						<div class="slides">
-							<a href="." style="color: white">
+							<a href="<?php echo "post.phtml" . $pastGET . "&postnum=" . max(0,$maxproj-1); ?>" style="color: var(--shadow-text-color)">
 							<div class="slider">
 								<div class="legend"></div>
 								<div class="content">
 									<div class="content-txt">
-										<h1><?php echo parse_ini_file("posts/". max(0,$maxproj-1) ."/postdata.ini", true)["post-info"]["name"]; ?></h1>
-										<h2><?php echo parse_ini_file("posts/". max(0,$maxproj-1) ."/postdata.ini", true)["post-info"]["short-description"]; ?></h2>
+										<h1><?php echo parse_ini_file("posts/". max(0,$maxproj-1) ."/postdata.ini".$postLang, true)["post-info"]["name"]; ?></h1>
+										<h2><?php echo parse_ini_file("posts/". max(0,$maxproj-1) ."/postdata.ini".$postLang, true)["post-info"]["short-description"]; ?></h2>
 									</div>
 								</div>
 							</div>
 							</a>
-							<a href="." style="color: white">
+							<a href="<?php echo "post.phtml" . $pastGET . "&postnum=" . max(0,$maxproj-2); ?>" style="color: var(--shadow-text-color)">
 							<div class="slider">
 								<div class="legend"></div>
 								<div class="content">
 									<div class="content-txt">
-										<h1><?php echo parse_ini_file("posts/". max(0,$maxproj-1) ."/postdata.ini", true)["post-info"]["name"]; ?></h1>
-										<h2><?php echo parse_ini_file("posts/". max(0,$maxproj-1) ."/postdata.ini", true)["post-info"]["short-description"]; ?></h2>
+										<h1><?php echo parse_ini_file("posts/". max(0,$maxproj-2) ."/postdata.ini".$postLang, true)["post-info"]["name"]; ?></h1>
+										<h2><?php echo parse_ini_file("posts/". max(0,$maxproj-2) ."/postdata.ini".$postLang, true)["post-info"]["short-description"]; ?></h2>
 									</div>
 								</div>
 							</div>
 							</a>
-							<a href="." style="color: white">
+							<a href="<?php echo "post.phtml" . $pastGET . "&postnum=" . max(0,$maxproj-3); ?>" style="color: var(--shadow-text-color)">
 							<div class="slider">
 								<div class="legend"></div>
 								<div class="content">
 									<div class="content-txt">
-										<h1><?php echo parse_ini_file("posts/". max(0,$maxproj-1) ."/postdata.ini", true)["post-info"]["name"]; ?></h1>
-										<h2><?php echo parse_ini_file("posts/". max(0,$maxproj-1) ."/postdata.ini", true)["post-info"]["short-description"]; ?></h2>
+										<h1><?php echo parse_ini_file("posts/". max(0,$maxproj-3) ."/postdata.ini".$postLang, true)["post-info"]["name"]; ?></h1>
+										<h2><?php echo parse_ini_file("posts/". max(0,$maxproj-3) ."/postdata.ini".$postLang, true)["post-info"]["short-description"]; ?></h2>
 									</div>
 								</div>
 							</div>
 							</a>
-							<a href="https://www.google.com.br" style="color: white">
+							<a href="<?php echo "post.phtml" . $pastGET . "&postnum=" . max(0,$maxproj-4); ?>" style="color: var(--shadow-text-color)">
 							<div class="slider">
 								<div class="legend"></div>
 								<div class="content">
 									<div class="content-txt">
-										<h1><?php echo parse_ini_file("posts/". max(0,$maxproj-1) ."/postdata.ini", true)["post-info"]["name"]; ?></h1>
-										<h2><?php echo parse_ini_file("posts/". max(0,$maxproj-1) ."/postdata.ini", true)["post-info"]["short-description"]; ?></h2>
+										<h1><?php echo parse_ini_file("posts/". max(0,$maxproj-4) ."/postdata.ini".$postLang, true)["post-info"]["name"]; ?></h1>
+										<h2><?php echo parse_ini_file("posts/". max(0,$maxproj-4) ."/postdata.ini".$postLang, true)["post-info"]["short-description"]; ?></h2>
 									</div>
 								</div>
 							</div>
@@ -102,17 +119,17 @@
 							</div>
 							<div class="slider">
 								<div class="slider_image">
-									<div class="slider_image" style="background-image: url(posts/<?php echo max(0,$maxproj-1)?>/image.png); background-size: cover;"></div>	
+									<div class="slider_image" style="background-image: url(posts/<?php echo max(0,$maxproj-2)?>/image.png); background-size: cover;"></div>	
 								</div>
 							</div>
 							<div class="slider">
 								<div class="slider_image">
-									<div class="slider_image" style="background-image: url(posts/<?php echo max(0,$maxproj-1)?>/image.png); background-size: cover;"></div>	
+									<div class="slider_image" style="background-image: url(posts/<?php echo max(0,$maxproj-3)?>/image.png); background-size: cover;"></div>	
 								</div>
 							</div>
 							<div class="slider">
 								<div class="slider_image">
-									<div class="slider_image" style="background-image: url(posts/<?php echo max(0,$maxproj-1)?>/image.png); background-size: cover;"></div>	
+									<div class="slider_image" style="background-image: url(posts/<?php echo max(0,$maxproj-4)?>/image.png); background-size: cover;"></div>	
 								</div>
 							</div>
 						</div>
@@ -128,6 +145,7 @@
 					</div>
 				</div>
 			</div>
+			<!--
 			<div id="donate">
 				<h2 class="section_title"><?php $position="donate"; include "php/getBody.php"; ?></h2>
 				<div id="organizations">
@@ -138,88 +156,98 @@
 							<div class="org_text"><p><i><?php $org=1; include "php/donate.php"; ?></i></p></div>
 						</div>
 					</div></a>
-					<a style="text-decoration: none" target="_blank" href="https://letsencrypt.org/"><div class="org">
+					<a style="text-decoration: none" target="_blank" href="https://theoceancleanup.com/"><div class="org">
 						<div><img class="org_img" src="images/third_party/org/org2.png"></div>
 						<div class="org_info">
-							<div class="org_name"><b>Let's Encrypt</b></div>
+							<div class="org_name"><b>The Ocean Cleanup</b></div>
 							<div class="org_text"><p><i><?php $org=2; include "php/donate.php"; ?></i></p></div>
 						</div>
 					</div></a>
 				</div>
 			</div> 
-			
+			-->
 			<div class="linkable" id="posts">
 				<div id="posts_box">
 					<div id="post_list">
 						<h2 class="section_title"><?php $position="posts"; include "php/getBody.php"; ?></h2>
 						<div id="post_table">
-							<div class="post_item">
-								<div class="post_img" style="background-image: url(posts/<?php echo max(0,$maxproj-1)?>/image.png); background-size: cover; background-position: center;"></div>
-								<div class="post_text">
-									<h3 style="font-style: bold;"><?php echo parse_ini_file("posts/". max(0,$maxproj-1) ."/postdata.ini", true)["post-info"]["name"]?></h3>
-									<p style="font-style: italic;"><?php echo parse_ini_file("posts/". max(0,$maxproj-1) ."/postdata.ini", true)["post-info"]["long-description"]?></p>
+							<a href="<?php echo "post.phtml" . $pastGET . "&postnum=" . max(0,$maxproj-1); ?>" style="color:white; text-decoration: none; margin: auto 0 auto 0; height: 90%;">
+								<div class="post_item">
+									<div class="post_img" style="background-image: url(posts/<?php echo max(0,$maxproj-1)?>/image.png); background-size: cover; background-position: center;"></div>
+									<div class="post_text">
+										<h3 style="font-style: bold;"><?php echo parse_ini_file("posts/". max(0,$maxproj-1) ."/postdata.ini".$postLang, true)["post-info"]["name"]?></h3>
+										<p style="font-style: italic;"><?php echo parse_ini_file("posts/". max(0,$maxproj-1) ."/postdata.ini".$postLang, true)["post-info"]["long-description"]?></p>
+									</div>
 								</div>
-							</div>
-							<div class="post_item">
-								<div class="post_img" style="background-image: url(posts/<?php echo max(0,$maxproj-2)?>/image.png); background-size: cover; background-position: center;"></div>
-								<div class="post_text">
-									<h3 style="font-style: bold;"><?php echo parse_ini_file("posts/". max(0,$maxproj-2) ."/postdata.ini", true)["post-info"]["name"]?></h3>
-									<p style="font-style: italic;"><?php echo parse_ini_file("posts/". max(0,$maxproj-2) ."/postdata.ini", true)["post-info"]["long-description"]?></p>
+							</a>
+							<a href="<?php echo "post.phtml" . $pastGET . "&postnum=" . max(0,$maxproj-2); ?>" style="color:white; text-decoration: none; margin: auto 0 auto 0; height: 90%;">
+								<div class="post_item">
+									<div class="post_img" style="background-image: url(posts/<?php echo max(0,$maxproj-2)?>/image.png); background-size: cover; background-position: center;"></div>
+									<div class="post_text">
+										<h3 style="font-style: bold;"><?php echo parse_ini_file("posts/". max(0,$maxproj-2) ."/postdata.ini".$postLang, true)["post-info"]["name"]?></h3>
+										<p style="font-style: italic;"><?php echo parse_ini_file("posts/". max(0,$maxproj-2) ."/postdata.ini".$postLang, true)["post-info"]["long-description"]?></p>
+									</div>
 								</div>
-							</div>
-							<div class="post_item">
-								<div class="post_img" style="background-image: url(posts/<?php echo max(0,$maxproj-3)?>/image.png); background-size: cover; background-position: center;"></div>
-								<div class="post_text">
-									<h3 style="font-style: bold;"><?php echo parse_ini_file("posts/". max(0,$maxproj-3) ."/postdata.ini", true)["post-info"]["name"]?></h3>
-									<p style="font-style: italic;"><?php echo parse_ini_file("posts/". max(0,$maxproj-3) ."/postdata.ini", true)["post-info"]["long-description"]?></p>
+							</a>
+							<a href="<?php echo "post.phtml" . $pastGET . "&postnum=" . max(0,$maxproj-3); ?>" style="color:white; text-decoration: none; margin: auto 0 auto 0; height: 90%;">
+								<div class="post_item">
+									<div class="post_img" style="background-image: url(posts/<?php echo max(0,$maxproj-3)?>/image.png); background-size: cover; background-position: center;"></div>
+									<div class="post_text">
+										<h3 style="font-style: bold;"><?php echo parse_ini_file("posts/". max(0,$maxproj-3) ."/postdata.ini".$postLang, true)["post-info"]["name"]?></h3>
+										<p style="font-style: italic;"><?php echo parse_ini_file("posts/". max(0,$maxproj-3) ."/postdata.ini".$postLang, true)["post-info"]["long-description"]?></p>
+									</div>
 								</div>
-							</div>
-							<div class="post_item">
-								<div class="post_img" style="background-image: url(posts/<?php echo max(0,$maxproj-4)?>/image.png); background-size: cover; background-position: center;"></div>
-								<div class="post_text">
-									<h3 style="font-style: bold;"><?php echo parse_ini_file("posts/". max(0,$maxproj-4) ."/postdata.ini", true)["post-info"]["name"]?></h3>
-									<p style="font-style: italic;"><?php echo parse_ini_file("posts/". max(0,$maxproj-4) ."/postdata.ini", true)["post-info"]["long-description"]?></p>
+							</a>
+							<a href="<?php echo "post.phtml" . $pastGET . "&postnum=" . max(0,$maxproj-4); ?>" style="color:white; text-decoration: none; margin: auto 0 auto 0; height: 90%;">
+								<div class="post_item">
+									<div class="post_img" style="background-image: url(posts/<?php echo max(0,$maxproj-4)?>/image.png); background-size: cover; background-position: center;"></div>
+									<div class="post_text">
+										<h3 style="font-style: bold;"><?php echo parse_ini_file("posts/". max(0,$maxproj-4) ."/postdata.ini".$postLang, true)["post-info"]["name"]?></h3>
+										<p style="font-style: italic;"><?php echo parse_ini_file("posts/". max(0,$maxproj-4) ."/postdata.ini".$postLang, true)["post-info"]["long-description"]?></p>
+									</div>
 								</div>
-							</div>
+							</a>
 						</div>
-						<h4 style="font-style: oblique; text-align: right">...Mais</h4>
+						<h4 style="font-style: oblique; text-align: right;"><a href="." style="color: var(--body-text-color); text-decoration: none;"><?php $position="more"; include "php/getBody.php"; ?></a></h4>
 					</div>
 					<div id="sidebar_info">
 						<h2 class="section_title"><?php $position="sidebar"; include "php/getBody.php"; ?></h2>
 						<div id="resumo">
 							<div>
-								<h3>Trabalhos em Andamento</h3>
+								<h3><?php $position="ongoing_work"; include "php/getBody.php"; ?></h3>
 								<h1><?php echo parse_ini_file("base.ini", true)["info"]["work_ongoing"]; ?></h1>
 							</div>
 							<div>
-								<h3>Projetos Concluídos</h3>
+								<h3><?php $position="done_work"; include "php/getBody.php"; ?></h3>
 								<h1><?php echo parse_ini_file("base.ini", true)["info"]["work_done"]; ?></h1>
 							</div>
+							<!--
 							<div>
-								<h3>Disponibilidade</h3>
+								<h3><?php $position="availability"; include "php/getBody.php"; ?></h3>
 								<div id="disp_bar">
-									<span class="disp_text disp_full"> Cheio </span>
-									<span class="disp_text disp_free"> Livre </span>
+									<span class="disp_text disp_full"> <?php $position="full"; include "php/getBody.php"; ?> </span>
+									<span class="disp_text disp_free"> <?php $position="free"; include "php/getBody.php"; ?> </span>
 									<div id="disp_cursor" style="left: <?php echo parse_ini_file("base.ini",true)["info"]["disp"]*95/100?>%;"></div>
 								</div>
 							</div>
+							-->
 						</div>
 						<div id="last_updates">
-							<h2 class="section_title">Ultimas atualizações</h2>
+							<h2 class="section_title"><?php $position="last_updates"; include "php/getBody.php"; ?></h2>
 							<ul style="list-style-type: circle;">
-								<li><a style="text-decoration: underline; color: white;" href="<?php echo parse_ini_file("base.ini",true)["update"]["link"][0]?>" target="_blank"><b><?php echo parse_ini_file("base.ini",true)["update"]["date"][0]?> </b><?php echo parse_ini_file("base.ini",true)["update"]["text"][0]?></a></li>
+								<li><a style="text-decoration: underline; color: white;" href="<?php echo parse_ini_file("base.ini",true)["update"]["link"][0]?>" target="_blank"><b><?php echo parse_ini_file("base.ini",true)["update"]["date"][0]?> </b><?php echo parse_ini_file("base.ini",true)["update"]["text".$postLang][0]?></a></li>
 							</ul>
 							<ul style="list-style-type: circle;">
-								<li><a style="text-decoration: underline; color: white;" href="<?php echo parse_ini_file("base.ini",true)["update"]["link"][1]?>" target="_blank"><b><?php echo parse_ini_file("base.ini",true)["update"]["date"][1]?> </b><?php echo parse_ini_file("base.ini",true)["update"]["text"][1]?></a></li>
+								<li><a style="text-decoration: underline; color: white;" href="<?php echo parse_ini_file("base.ini",true)["update"]["link"][1]?>" target="_blank"><b><?php echo parse_ini_file("base.ini",true)["update"]["date"][1]?> </b><?php echo parse_ini_file("base.ini",true)["update"]["text".$postLang][1]?></a></li>
 							</ul>
 							<ul style="list-style-type: circle;">
-								<li><a style="text-decoration: underline; color: white;" href="<?php echo parse_ini_file("base.ini",true)["update"]["link"][2]?>" target="_blank"><b><?php echo parse_ini_file("base.ini",true)["update"]["date"][2]?> </b><?php echo parse_ini_file("base.ini",true)["update"]["text"][2]?></a></li>
+								<li><a style="text-decoration: underline; color: white;" href="<?php echo parse_ini_file("base.ini",true)["update"]["link"][2]?>" target="_blank"><b><?php echo parse_ini_file("base.ini",true)["update"]["date"][2]?> </b><?php echo parse_ini_file("base.ini",true)["update"]["text".$postLang][2]?></a></li>
 							</ul>
 							<ul style="list-style-type: circle;">
-								<li><a style="text-decoration: underline; color: white;" href="<?php echo parse_ini_file("base.ini",true)["update"]["link"][3]?>" target="_blank"><b><?php echo parse_ini_file("base.ini",true)["update"]["date"][3]?> </b><?php echo parse_ini_file("base.ini",true)["update"]["text"][3]?></a></li>
+								<li><a style="text-decoration: underline; color: white;" href="<?php echo parse_ini_file("base.ini",true)["update"]["link"][3]?>" target="_blank"><b><?php echo parse_ini_file("base.ini",true)["update"]["date"][3]?> </b><?php echo parse_ini_file("base.ini",true)["update"]["text".$postLang][3]?></a></li>
 							</ul>
 							<ul style="list-style-type: circle;">
-								<li><a style="text-decoration: underline; color: white;" href="<?php echo parse_ini_file("base.ini",true)["update"]["link"][4]?>" target="_blank"><b><?php echo parse_ini_file("base.ini",true)["update"]["date"][4]?> </b><?php echo parse_ini_file("base.ini",true)["update"]["text"][4]?></a></li>
+								<li><a style="text-decoration: underline; color: white;" href="<?php echo parse_ini_file("base.ini",true)["update"]["link"][4]?>" target="_blank"><b><?php echo parse_ini_file("base.ini",true)["update"]["date"][4]?> </b><?php echo parse_ini_file("base.ini",true)["update"]["text".$postLang][4]?></a></li>
 							</ul>
 						</div>
 					</div>
@@ -229,35 +257,37 @@
 				<h2 class="section_title"><?php $position="port"; include "php/getBody.php"; ?></h2>
 				<div id="port_box">
 					<div class="port_item" style="grid-area: 1 / 1 / 4 / 4; background: url(posts/<?php echo parse_ini_file("base.ini",true)["portifolio"]["project"][0]?>/image.png); background-size: cover; background-position: center center;">
-						<a href="."><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
-							<div class="port_text_back"><h2 class="port_text_big port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][0] ."/postdata.ini", true)["project-info"]["name"]?></h2></div>
+						<a href="<?php echo "post.phtml?" . $langGET . "&postnum=" . parse_ini_file("base.ini",true)["portifolio"]["project"][0]; ?>"><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
+							<div class="port_text_back"><h2 class="port_text_big port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][0] ."/postdata.ini".$postLang, true)["project-info"]["name"]?></h2></div>
 						</div></a>
 					</div>
 					<div class="port_item" style="grid-area: 1 / 4 / 4 / 6; background: url(posts/<?php echo parse_ini_file("base.ini",true)["portifolio"]["project"][1]?>/image.png); background-size: cover; background-position: center     center;">
-						<a href="."><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
-							<div class="port_text_back"><h2 class="port_text_big port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][1] ."/postdata.ini", true)["project-info"]["name"]?></h2></div>
+						<a href="<?php echo "post.phtml?" . $langGET . "&postnum=" . parse_ini_file("base.ini",true)["portifolio"]["project"][1]; ?>"><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
+							<div class="port_text_back"><h2 class="port_text_big port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][1] ."/postdata.ini".$postLang, true)["project-info"]["name"]?></h2></div>
 						</div></a>
 					</div>
-					<div class="port_item" style="grid-area: 4 / 1 / 6 / 3; background: url(posts/<?php echo parse_ini_file("base.ini",true)["portifolio"]["project"][2]?>/image.png); background-size: cover; background-position: center     center;">
-						<a href="."><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
-							<div class="port_text_back"><h2 class="port_text_big port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][2] ."/postdata.ini", true)["project-info"]["name"]?></h2></div>
+					<div class="port_item" style="grid-area: 4 / 1 / 6 / 4; background: url(posts/<?php echo parse_ini_file("base.ini",true)["portifolio"]["project"][2]?>/image.png); background-size: cover; background-position: center     center;">
+						<a href="<?php echo "post.phtml?" . $langGET . "&postnum=" . parse_ini_file("base.ini",true)["portifolio"]["project"][2]; ?>"><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
+							<div class="port_text_back"><h2 class="port_text_big port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][2] ."/postdata.ini".$postLang, true)["project-info"]["name"]?></h2></div>
 						</div></a>
 					</div>
-					<div class="port_item" style="grid-area: 4 / 3 / 6 / 5; background: url(posts/<?php echo parse_ini_file("base.ini",true)["portifolio"]["project"][3]?>/image.png); background-size: cover; background-position: center     center;">
-						<a href="."><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
-							<div class="port_text_back"><h2 class="port_text_big port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][3] ."/postdata.ini", true)["project-info"]["name"]?></h2></div>
+					<div class="port_item" style="grid-area: 4 / 4 / 6 / 6; background: url(posts/<?php echo parse_ini_file("base.ini",true)["portifolio"]["project"][3]?>/image.png); background-size: cover; background-position: center     center;">
+						<a href="<?php echo "post.phtml?" . $langGET . "&postnum=" . parse_ini_file("base.ini",true)["portifolio"]["project"][3]; ?>"><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
+							<div class="port_text_back"><h2 class="port_text_big port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][3] ."/postdata.ini".$postLang, true)["project-info"]["name"]?></h2></div>
 						</div></a>
 					</div>
+					<!--
 					<div class="port_item" style="grid-area: 4 / 5 / 5 / 5; background: url(posts/<?php echo parse_ini_file("base.ini",true)["portifolio"]["project"][4]?>/image.png); background-size: cover; background-position: center     center;">
-						<a href="."><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
-							<div class="port_text_back"><h2 class="port_text_big port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][4] ."/postdata.ini", true)["project-info"]["name"]?></h2></div>
+						<a href="<?php echo "post.phtml?" . $langGET . "&postnum=" . parse_ini_file("base.ini",true)["portifolio"]["project"][4]; ?>"><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
+							<div class="port_text_back"><h2 class="port_text_small port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][4] ."/postdata.ini".$postLang, true)["project-info"]["name"]?></h3></div>
 						</div></a>
 					</div>
 					<div class="port_item" style="grid-area: 5 / 5 / 6 / 6; background: url(posts/<?php echo parse_ini_file("base.ini",true)["portifolio"]["project"][5]?>/image.png); background-size: cover; background-position: center     center;">
-						<a href="."><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
-							<div class="port_text_back"><h2 class="port_text_big port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][5] ."/postdata.ini", true)["project-info"]["name"]?></h2></div>
+						<a href="<?php echo "post.phtml?" . $langGET . "&postnum=" . parse_ini_file("base.ini",true)["portifolio"]["project"][5]; ?>"><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
+							<div class="port_text_back"><h2 class="port_text_small port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][5] ."/postdata.ini".$postLang, true)["project-info"]["name"]?></h2></div>
 						</div></a>
 					</div>
+					-->
 				</div>
 			</div>
 
@@ -266,9 +296,17 @@
 				<div id="about_box">
 					<div id="profile_info">
 						<h2 class="section_title"><?php $position="about"; include "php/getBody.php"; ?></h2>
-						<h2 class="section_title" style="font-family: serif"><i>Lucas Zischler</i></h2>
 						<div id="pf_pic_droid_box">
-							<div id="pf_pic_box">
+							<noscript>
+								<style>
+									#pic0 {
+										background: url(images/profile/enable_js.png) !important;
+										background-size: 100% !important;
+									}
+								</style>
+							</noscript>
+							<div id="pf_pic_box" onclick="setEasterEgg()">
+								<div id="pic0" class="pf_pic"></div>
 								<div id="pic1" class="pf_pic"></div>
 								<div id="pic2" class="pf_pic"></div>
 								<div id="pic3" class="pf_pic"></div>
@@ -278,6 +316,7 @@
 							</div>
 							<div id="droid_shield"></div>
 						</div>
+						<h2 class="section_title" style="font-family: serif"><i>Lucas Zischler</i></h2>
 						<div id="prof_links">
 							<a href="<?php echo parse_ini_file("base.ini",true)["reference"]["github"]?>" target="_blank"><div id="github_ref" class="third_party_ref"></div></a>
 							<a href="<?php echo parse_ini_file("base.ini",true)["reference"]["lattes"]?>" target="_blank"><div id="lattes_ref" class="third_party_ref"></div></a>
@@ -285,30 +324,32 @@
 						</div>
 					</div>
 					<div id="about_text">
-						<h2 class="section_title">Biografía</h2>
+						<h2 class="section_title"><?php $position="biography"; include "php/getBody.php"; ?></h2>
 						<div id="biography">
-							<p style="text-align: center">Lucas Zischler é um estudante de Engenharia Elétrica na Universidade Tecnológica Federal do Paraná, Câmpus Apucarana.</p>
+							<p style="text-align: center"><?php echo parse_ini_file("base.ini",true)["about"]["biography".$postLang]?></p>
 						</div>
 						<div id="quote">
-							<p style="text-align: center; color: #ddd; line-height: 1em"><span style="font-size:2em; position: relative; bottom: -0.25em; font-family: serif"><b>&ldquo;</b> </span><cite><?php echo parse_ini_file("base.ini",true)["quotes"]["text"][$quote]?></cite><span style="font-size:2em; position: relative; bottom: -0.35em; font-family: serif"> <b>&rdquo;</b></span></p>
+							<p style="text-align: center; line-height: 1em"><span style="font-size:2em; position: relative; bottom: -0.25em; font-family: serif"><b>&ldquo;</b> </span><cite><?php echo parse_ini_file("base.ini",true)["quotes"]["text"][$quote]?></cite><span style="font-size:2em; position: relative; bottom: -0.35em; font-family: serif"> <b>&rdquo;</b></span></p>
 							<h3 style="text-align: center; color: #ddd; font-weight: bold; font-style: italic; font-family: serif"><?php echo parse_ini_file("base.ini",true)["quotes"]["author"][$quote]?></h3>
 						</div>
 						<div id="institutions">
-							<h3>Instituições</h3>
-							<div><i>Estudante de Engenharia Elétrica</i><br>UTFPR: Universidade Técnológica Federal do Paraná</div>
+							<h3 class="section_title"><?php $position="institutions"; include "php/getBody.php"; ?></h3>
+							<div><i><?php echo parse_ini_file("base.ini",true)["about"]["inst_pos".$postLang][0]?></i><br><?php echo parse_ini_file("base.ini",true)["about"]["inst_name".$postLang][0]?></br></div>
 						</div>
 					</div>
 				</div>
+				<canvas id="easter_egg_canvas" width="800" height="640" style="display: none; margin: 1em auto 1em auto; background: #FFF;"></canvas>
 			</div>
 			<div class="linkable" id="contato">
 				<h2 class="section_title"><?php $position="cont"; include "php/getBody.php"; ?></h2>
-				<div class="email"><a style="color: white;" href="mailto:luczis@alunos.utfpr.edu.br"><b>E-mail</b> luczis@alunos.utfpr.edu.br</a></div>
+				<div class="email"><a style="color: var(--body-text-color);" href="mailto:luczis@alunos.utfpr.edu.br"><b>E-mail:</b> luczis@alunos.utfpr.edu.br</a></div>
+				<div class="number"><a style="color: var(--body-text-color);"><b><?php $position="number"; include "php/getBody.php"; ?>:</b> +55 (43) 99622-2534</a></div>
 			</div>
 
 			<div id="copyleft">
-				Copyleft &#127279; 2020 Lucas Zischler	
-				<p lang="pt_br">Lucas Zischler, Site Pessoal, 2020</p>
-				<p lang="pt_br">Copyleft: Esta obra é livre, você pode copiar, compartilhar e modificar sob os termos da <a href="http://artlibre.org/licence/lal/pt/">Licença da Arte Livre</a></p>
+				Copyleft &#127279; 2020 Lucas Zischler
+				<p><?php $position="copyleft-name"; include "php/getBody.php"; ?>, 2020</p>
+				<p><?php $position="copyleft-notice"; include "php/getBody.php"; ?><p>
 			</div>
 		</main>
 	</body>

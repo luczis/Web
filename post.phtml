@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- Website desenvolvido e mantido por Lucas Zischler :) -->
+<html lang="pt_br" style="scroll-behavior:smooth">
+	<head>
+		<?php 
+			$lang=$_GET["lang"];
+			$postnum=$_GET["postnum"];
+			$pastGET="?";
+			if(isset($lang)) {
+				if(!(strcmp($lang,"en_us") or strcmp($lang,"pt_br"))) {
+					$lang="pt_br";
+				}
+				if($lang !== "pt_br") {
+					$postLang= "." . $lang;
+				}
+				$langGET= "&lang=" . $lang;
+				$pastGET=$pastGET . "&lang=" . $lang;
+			}
+			if(isset($postnum)) {
+				if(!is_numeric($postnum)) {
+					$postnum = 0;
+				}
+				$postnumGET= "&postnum=" . $postnum;
+				$pastGET=$pastGET . "&postnum=" . $postnum;
+			}
+			$maxquotes=parse_ini_file("base.ini",true)["quotes"]["count"];
+			$quote=rand(0,$maxquotes-1);
+			$maxproj=parse_ini_file("base.ini",true)["projects"]["count"];
+		?>
+		<base href="index.phtml">
+		<meta charset="UTF-8">
+		<title>Lucas Zischler: <?php $position="title"; include "php/getHead.php"; ?></title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta name="author" content="Lucas Zischler">
+		<meta name="description" content="Portifolio do Lucas Zischler, estudante de Engenharia Elétrica pela Universidade Tecnológica Federal do Paraná">	
+		<meta name"keywords" content="Lucas Zischler, Engenharia Elétrica, UTFPR, Portifolio, Site pessoal">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="images/favicon/favicon.svg">
+		<link rel="alternate icon" href="images/favicon/favicon.png">
+	</head>
+	<body>
+	<main>
+		<header>
+			<div id="top_bar">
+				<div id="navigation">
+					<div><a class="nav_button" href="index.phtml?<?php echo $langGET; ?>"><b><?php $position="home"; include "php/getHead.php"; ?></b></a></div>
+					<div> </div>
+					<div> </div>
+					<div> </div>
+					<div> </div>
+					<div> </div>
+					<div><?php $position="lang"; include "php/getHead.php"; ?>:</div>	
+					<div id="idiomas">
+						<div><a href="post.phtml?lang=en_us<?php echo "&postnum=" . $postnum; ?>" class="en_us_icon lang_icon"></a></div>
+						<div><a href="post.phtml?lang=pt_br<?php echo "&postnum=" . $postnum; ?>" class="pt_br_icon lang_icon"></a></div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<div class="linkable" id="postpage">
+				<div id="postpage_box">
+						<div style="margin: 0 auto 0 auto;"><img id="postpage_img" src="posts/<?php echo $postnum?>/image.png"></div>
+						<h1 id="postpage_title"><?php echo parse_ini_file("posts/". $postnum ."/postdata.ini".$postLang, true)["post-info"]["name"]; ?></h1>
+						<h2 id="postpage_date"><?php echo parse_ini_file("posts/". $postnum ."/postdata.ini".$postLang, true)["project-info"]["release-date"];?></h2>
+						<div id="postpage_text"><?php echo file_get_contents("posts/". $postnum ."/postText".$postLang, true); ?></div>
+						<h3 style="font-family: serif; font-weight: normal; text-align: center; color: var(--section-title-color);"><i>Lucas Zischler</i></h3>
+				</div>
+			</div>
+			<div class="linkable" id="portifolio">
+				<h2 class="section_title"><?php $position="port"; include "php/getBody.php"; ?></h2>
+				<div id="port_box">
+					<div class="port_item" style="grid-area: 1 / 1 / 4 / 4; background: url(posts/<?php echo parse_ini_file("base.ini",true)["portifolio"]["project"][0]?>/image.png); background-size: cover; background-position: center center;">
+						<a href="<?php echo "post.phtml?" . $langGET . "&postnum=" . parse_ini_file("base.ini",true)["portifolio"]["project"][0]; ?>"><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
+							<div class="port_text_back"><h2 class="port_text_big port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][0] ."/postdata.ini".$postLang, true)["project-info"]["name"]?></h2></div>
+						</div></a>
+					</div>
+					<div class="port_item" style="grid-area: 1 / 4 / 4 / 6; background: url(posts/<?php echo parse_ini_file("base.ini",true)["portifolio"]["project"][1]?>/image.png); background-size: cover; background-position: center     center;">
+						<a href="<?php echo "post.phtml?" . $langGET . "&postnum=" . parse_ini_file("base.ini",true)["portifolio"]["project"][1]; ?>"><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
+							<div class="port_text_back"><h2 class="port_text_big port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][1] ."/postdata.ini".$postLang, true)["project-info"]["name"]?></h2></div>
+						</div></a>
+					</div>
+					<div class="port_item" style="grid-area: 4 / 1 / 6 / 3; background: url(posts/<?php echo parse_ini_file("base.ini",true)["portifolio"]["project"][2]?>/image.png); background-size: cover; background-position: center     center;">
+						<a href="<?php echo "post.phtml?" . $langGET . "&postnum=" . parse_ini_file("base.ini",true)["portifolio"]["project"][2]; ?>"><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
+							<div class="port_text_back"><h2 class="port_text_big port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][2] ."/postdata.ini".$postLang, true)["project-info"]["name"]?></h2></div>
+						</div></a>
+					</div>
+					<div class="port_item" style="grid-area: 4 / 3 / 6 / 5; background: url(posts/<?php echo parse_ini_file("base.ini",true)["portifolio"]["project"][3]?>/image.png); background-size: cover; background-position: center     center;">
+						<a href="<?php echo "post.phtml?" . $langGET . "&postnum=" . parse_ini_file("base.ini",true)["portifolio"]["project"][3]; ?>"><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
+							<div class="port_text_back"><h2 class="port_text_big port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][3] ."/postdata.ini".$postLang, true)["project-info"]["name"]?></h2></div>
+						</div></a>
+					</div>
+					<div class="port_item" style="grid-area: 4 / 5 / 5 / 5; background: url(posts/<?php echo parse_ini_file("base.ini",true)["portifolio"]["project"][4]?>/image.png); background-size: cover; background-position: center     center;">
+						<a href="<?php echo "post.phtml?" . $langGET . "&postnum=" . parse_ini_file("base.ini",true)["portifolio"]["project"][4]; ?>"><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
+							<div class="port_text_back"><h2 class="port_text_small port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][4] ."/postdata.ini".$postLang, true)["project-info"]["name"]?></h2></div>
+						</div></a>
+					</div>
+					<div class="port_item" style="grid-area: 5 / 5 / 6 / 6; background: url(posts/<?php echo parse_ini_file("base.ini",true)["portifolio"]["project"][5]?>/image.png); background-size: cover; background-position: center     center;">
+						<a href="<?php echo "post.phtml?" . $langGET . "&postnum=" . parse_ini_file("base.ini",true)["portifolio"]["project"][5]; ?>"><div style="width: 100%; height: 100%; text-decoration: none; color: white;">
+							<div class="port_text_back"><h2 class="port_text_small port_text"><?php echo parse_ini_file("posts/". parse_ini_file("base.ini",true)["portifolio"]["project"][5] ."/postdata.ini".$postLang, true)["project-info"]["name"]?></h2></div>
+						</div></a>
+					</div>
+				</div>
+			</div>
+
+			<div id="copyleft">
+				Copyleft &#127279; 2020 Lucas Zischler	
+				<p lang="pt_br">Lucas Zischler, Site Pessoal, 2020</p>
+				<p lang="pt_br">Copyleft: Esta obra é livre, você pode copiar, compartilhar e modificar sob os termos da <a href="http://artlibre.org/licence/lal/pt/">Licença da Arte Livre</a></p>
+			</div>
+		</main>
+	</body>
+
+</html>

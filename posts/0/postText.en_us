@@ -1,0 +1,18 @@
+<p>This website is a work developped by myself, where I use a Raspberry Pi 3B, as a server.</p>
+
+<img src="posts/0/servidorRpi.png" alt="Picture of a Raspberry Pi 3B" style ="display: block; margin: 0 auto 0 auto; width: 50%; max-width: var(--postpage-max-image-width)">
+<p style="text-align: center; color: var(--section-title-color);"><i>"Server" picture</i></p>
+
+<p>The idea arose as a necessity to create a portifolio for myself, having in mind that curriculum websites and social media don't appeal to me with the usage of my information. For my name to don't go hidden, this website was developed to keep my name in the internet, and,  if for any reason, someone is looking for me, this is my anchor.</p>
+
+<p>The development was somewhat hard, keeping in mind the little information I had about the topic. But with help from several people, (I truly appreciate the internet collaborativeness!) I was able to create this project, with almost zero knowledge of the themes.</p>
+
+<p>Main points:</p>
+<ul>
+<li>Installation of Linux Gento in a Raspberry Pi (I am thankful to the developer <a href="https://github.com/sakaki-" style="color: var(--section-title-color);">Sakaki</a> for creating a binary image for Rpi!)</li>
+<li>Configuration of the Apache server</li>
+<li>Indexing the link in a DNS server</li>
+<li>Development of the website with HTML/CSS</li>
+</ul>
+
+<p>It was a truly interessant project to work, and I am extremely happy with the result!</p>

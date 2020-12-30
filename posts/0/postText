@@ -1,0 +1,18 @@
+<p>Este website é um trabalho desenvolvido por mim, onde utilizei um Raspberry Pi 3B, como servidor.</p>
+
+<img src="posts/0/servidorRpi.png" alt="Imagem de um Raspberry Pi 3B" style ="display: block; margin: 0 auto 0 auto; width: 50%; max-width: var(--postpage-max-image-width)">
+<p style="text-align: center; color: var(--section-title-color);"><i>Foto do "servidor"</i></p>
+
+<p>A ideia surgiu com a necessidade de se criar um portifólio para mim, tendo em mente que sites de currículo e redes sociais não me agradam quanto ao uso de minhas informações. Para meu nome não sumir do radar, este website foi desenvolvido para manter meu nome na internet, e, se por um acaso, alguém me procurar, esta é minha âncora.</p>
+
+<p>O desenvolvimento foi de certo modo trabalhoso, tendo em mente a pouca informação que eu tinha sobre o tópico. Mas com a ajuda de diversos indíviduos, (Eu agradeço imensamente a colaboratividade da internet!) consegui criar este projeto, com conhecimento quase zero dos assuntos.</p>
+
+<p>Principais itens:</p>
+<ul>
+<li>Instalação de Linux Gentoo em um Raspberry Pi (Agradeço a desenvolvedora <a href="https://github.com/sakaki-" style="color: var(--section-title-color);">Sakaki</a> por criar uma imagem para Rpi!)</li>
+<li>Configuração do servidor Apache</li>
+<li>Anexação de link a um servidor DNS</li>
+<li>Desenvolvimento do website em HTML/CSS</li>
+</ul>
+
+<p>Foi um projeto realmente interessante de realizar, e estou extremamente feliz com o resultado!</p>

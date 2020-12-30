@@ -2,20 +2,25 @@
 /* Desenvolvido e mantido por Lucas Zischler :) */
 
 :root {
-	--color-2: #323D14;
-	--color-1: #1E230E;
-	--color-3: #050A04;
+	--color-2: #141414;
+	--color-1: #1D3648;
+	--color-3: #12212B;
 	
-	--topbar-text-color: #81A40B;;
+	--topbar-text-color: #FF0;
 	--org-text-color: #ccc;
-	--section-title-color: #81A40B;
+	--section-title-color: #46C9F1;
+	--body-text-color: white;
+	--shadow-text-color: white;
+	--copyleft-text-color: var(--body-text-color);
 
 	--side-margin: 2%;
 	--slider-height: 700px;
 	--slider-width: 1000px;
 
-	--slide-shadow-color: rgba(36,55,21,0.7);
-	--slide-switch-on-color: #fff;
+	--postpage-max-image-width: 1000px;
+
+	--slide-shadow-color: rgba(127, 127, 0, 0.58);
+	--slide-switch-on-color: #11e9ff;
 	--slide-switch-off-color: #000;
 
 	--posts-back-color: var(--color-1);
@@ -35,13 +40,20 @@
 	}
 }
 
-body{
+body {
 	font-size: 16px;
 	min-width: 200px;
 	background-color: var(--body-back-color);
-	color: white;
+	color: var(--body-text-color);
 	padding-top: 2em;
 }
+a:link {
+	color: var(--section-title-color);
+}
+a:visited {
+	color: #ff9966;
+}
+
 #top_bar {
 	white-space: nowrap;
 	position: absolute;
@@ -65,15 +77,18 @@ body{
 	margin: auto;
 	padding: 0 0.5em 0 0.5em;
 	text-align: center;
-	color: var(--topbar-text-color);
+	color: var(--topbar-text-color) !important;
 	text-decoration: none;
+}
+.nav_button:hover {
+	filter: contrast(3);
 }
 div.linkable::before {
 	display: block;
 	content: " ";
 	position relative;
-	margin-top: -2em;
-	height: 2em;
+	margin-top: -20em;
+	height: 20em;
 	visibility: hidden;
 }
 #idiomas {
@@ -253,6 +268,7 @@ div.linkable::before {
 	margin: 0 var(--side-margin) 0 var(--side-margin);
 	font-family: Helvetica, monospace;
 	background-color: var(--donate-back-color);
+	border-radius: 1em;
 }
 
 #organizations {
@@ -262,7 +278,7 @@ div.linkable::before {
 	margin: 2%;
 }
 .org {
-	color: var(--org-text-color);
+	color: var(--body-text-color);
 	text-align: center;
 	display: grid;
 	grid-gap: 1%;
@@ -287,8 +303,46 @@ div.linkable::before {
 	font-size: 0.9em;
 	text-decoration: none;
 }
+/*----POSTPAGE----*/
+#postpage {
+	padding: 1em 1em 1em 1em;
+	margin: 1em var(--side-margin) 1em var(--side-margin);
+	font-family: Helvetica, monospace;
+	background-color: var(--posts-back-color);
+	display: grid;
+}
+#postpage_box {
+	width: 100%;
+	display: grid;
+	grid-gap: 1em;
+	grid-template-rows: auto;
+}
+#postpage_img {
+	width: 100%;
+	max-width: var(--postpage-max-image-width);
+	background-color: black;
+	background-position: center center;
+	background-repeat: no-repeat;
+	border-radius: 0.5em;
+}
+#postpage_title {
+	background: linear-gradient(90deg, var(--color-3), var(--color-2));
+	padding: 1em;
+	border-radius: 2em;
+	color: var(--section-title-color);
+	text-align: center;
+}
+#postpage_date {
+	color: var(--section-title-color);
+	text-align: center;
+}
+#postpage_text {
+	display: grid;
+	overflow: hidden;
+}
 /*----POSTS----*/
 #posts {
+	border-radius: 1em;
 	padding: 0 1em 0 1em;
 	margin: 1em var(--side-margin) 1em var(--side-margin);
 	font-family: Helvetica, monospace;
@@ -298,7 +352,7 @@ div.linkable::before {
 #posts_box {
 	display: grid;
 	grid-gap: 1em;
-	grid-template-columns: 4fr 1fr;
+	grid-template-columns: 4fr 2fr;
 	grid-template-rows: auto;
 }
 #post_list {
@@ -313,11 +367,14 @@ div.linkable::before {
 	grid-template-rows: 25% 25% 25% 25%;
 }
 .post_item {
+	color: var(--body-text-color);
 	margin: 0.5em;
 	display: grid;
 	grid-gap: 0.5em;
 	grid-template-columns: 20% auto;
+	height: 90%;
 	max-height: 20em;
+	min-height: 8em;
 }
 .post_img {
 	width: 100%;
@@ -329,11 +386,12 @@ div.linkable::before {
 .post_text {
 	display: grid;
 	grid-template-columns: auto;
-	grid-template-rows: 2em auto;
+	grid-template-rows: 3em auto;
 	overflow: hidden;
 }
 /*----SIDEBAR----*/
 #sidebar_info {
+	border-radius: 1em;
 	margin: 1em;
 	padding: 1em;
 	display: grid;
@@ -385,6 +443,7 @@ div.linkable::before {
 
 /*----PORTIFOLIO----*/
 #portifolio {
+	border-radius: 1em;
 	padding: 0 1em 1em 1em;
 	margin: 1em var(--side-margin) 1em var(--side-margin);
 	font-family: Helvetica, monospace;
@@ -405,6 +464,7 @@ div.linkable::before {
 	transition-timing-function: ease-out;
 }
 .port_text_back {
+	color: var(--shadow-text-color);
 	transition: 1s;
 	opacity: 0.2;
 	position: absolute;
@@ -433,6 +493,7 @@ div.linkable::before {
 
 /*----ABOUT----*/
 #about {
+	border-radius: 1em;
 	padding: 0 1em 1em 1em;
 	margin: 1em var(--side-margin) 1em var(--side-margin);
 	font-family: Helvetica, monospace;
@@ -440,10 +501,16 @@ div.linkable::before {
 	display: grid;
 	grid-template-columns: auto;
 	grid-template-rows: auto auto auto;
+	clip-path: circle(100%);
 }
 #about_box {
 	display: grid;
 	grid-template-columns: 25em auto;
+}
+#profile_info {
+	background: var(--color-2);
+	margin-top: 1em;
+	border-radius: 1em;
 }
 #pf_pic_droid_box {
 	margin: auto;
@@ -471,7 +538,7 @@ div.linkable::before {
 	grid-row: 1;
 	position: relative;
 	transition-timing-function: ease-in;
-	transition: 2s;
+	transition: 1.5s;
 	overflow: hidden;
 }
 #droid_shield {
@@ -483,6 +550,10 @@ div.linkable::before {
 	grid-area: 1 / 1 / 2 / 2;
 	z-index: 0;
 	transition: 2s;
+}
+#pic0 {
+	background: url(images/profile/pixel.png);
+	background-size: 100%;
 }
 #pic1 {
 	background: url(images/profile/p1.png);
@@ -509,10 +580,16 @@ div.linkable::before {
 	background-size: 100%;
 }
 @media (hover:hover) and (pointer:fine) {
-	#pf_pic_box:hover {cursor:help;}
+	/*#pf_pic_box:hover {cursor:help;}
 	#pf_pic_box:hover > #pic3 {transform: translate(-10%, 5%);}
 	#pf_pic_box:hover > #pic4 {transform: translate(-10%, 10%);}
-	#pf_pic_box:hover > #pic5 {transform: translate(-10%, 5%);}
+	#pf_pic_box:hover > #pic5 {transform: translate(-10%, 5%);}*/
+	#pf_pic_box:hover > #pic1 {filter: opacity(0%);}
+	#pf_pic_box:hover > #pic2 {filter: opacity(0%);}
+	#pf_pic_box:hover > #pic3 {filter: opacity(0%);}
+	#pf_pic_box:hover > #pic4 {filter: opacity(0%);}
+	#pf_pic_box:hover > #pic5 {filter: opacity(0%);}
+	#pf_pic_box:hover > #pic6 {filter: opacity(0%);}
 }
 @media (pointer:coarse) and (any-pointer:coarse) {
 	#pf_pic_box:hover {cursor:help;}
@@ -544,10 +621,11 @@ div.linkable::before {
 	width: 4em;
 	height: 4em;
 	background-size: cover;
-	transition: 1s;
+	transition: 0.5s;
+	filter: invert(0.6);
 }
 .third_party_ref:hover {
-	filter: invert(1);
+	filter: invert(1) blur(0.5px);
 }
 #about_text {
 	margin: 0 2em 2em 2em;
@@ -564,6 +642,7 @@ div.linkable::before {
 
 /*----CONTATO----*/
 #contato {
+	border-radius: 1em;
 	padding: 0 1em 1em 1em;
 	margin: 1em var(--side-margin) 1em var(--side-margin);
 	font-family: Helvetica, monospace;
@@ -573,9 +652,13 @@ div.linkable::before {
 .email {
 	text-align: center;
 }
+.number {
+	text-align: center;
+}
 
 /*----COPYLEFT----*/
 #copyleft {
+	color: var(--copyleft-text-color);
 	padding: 1em 0 1em 0;
 	width: 100%;
 	background-color: var(--copyleft-back-color);
@@ -586,7 +669,7 @@ div.linkable::before {
 @media (max-width:801px){
 	:root {
 		--side-margin: 5%;
-		--slider-height: 400px;
+		--slider-height: 600px;
 		--slider-width: 90%;
 	}
 
@@ -596,10 +679,14 @@ div.linkable::before {
 	.slider .legend {
 		border: 0;
 		background-color: var(--slide-shadow-color);
-		height: 240px;
+		height: 350px;
 		width: 100%;
 	}
-	.slider .content-txt {width: 90%;}
+	.slider .content-txt {
+		color: var(--shadow-text-color);
+		height: 240px;
+		width: 90%;
+	}
 
 	/*----DONATE----*/
 	.hide_if_small {display: none;}
@@ -608,13 +695,19 @@ div.linkable::before {
 	/*----POSTS----*/
 	#posts_box {
 		grid-template-columns: 100% !important;
-		grid-template-rows: auto auto auto;
+		grid-template-rows: auto auto auto !important;
 	}	
 	.post_item {
 		grid-template-columns: auto;
 		grid-template-rows: 10em auto;
+		height: auto;
 		max-height: none;
 	}
+	.post_text {
+		display: block;
+	}
+
+	/*----PORTIFOLIO----*/
 	#port_box {
 		display: block;
 	}
@@ -628,9 +721,13 @@ div.linkable::before {
 		top: 0%;
 		vertical-align: middle;
 	}
+	/*----ABOUT----*/
 	#about_box {
 		display: block;
 	}	
+	#profile_info {
+		padding: 1em 0 1em 0;
+	}
 }
 /* Desktops */
 @media (max-width:1281px){
