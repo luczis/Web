@@ -28,6 +28,7 @@ var about_display;
 var flag_easteregg_running = false;
 var flag_game_over = false;
 var flag_game_won = false;
+var stand_alone_page = false;
 function setEasterEgg() {
 	if(!flag_easteregg_running && !flag_game_over)
 	{
@@ -52,8 +53,6 @@ function setEasterEgg() {
 		});
 
 		setupGame();
-		document.addEventListener("keydown", keyDownHandler, false);
-		document.addEventListener("keyup", keyUpHandler, false);
 	}
 }
 
@@ -172,14 +171,11 @@ var tiles_JSON;
 var menu_screen_flag = true;
 var level_screen_flag = false;
 function setupGame() {
+	document.addEventListener("keydown", keyDownHandler, false);
+	document.addEventListener("keyup", keyUpHandler, false);
 	canvas = document.getElementById("easter_egg_canvas");
 	context = canvas.getContext("2d");
 	context.font = '24px Helvetica';
-	context.beginPath();
-	context.rect(20,40,50,50);
-	context.fillStyle="#FF0000";
-	context.fill();
-	context.closePath();
 
 	// Load level
 	loadJSON('js/level.json', function(response) {
@@ -259,10 +255,7 @@ function check_block_colision(entity) {
 					}
 					// End
 					else if(tile_num <=48) {
-						if(!flag_game_won) {
-							flag_game_won = true;
-							levelWon();
-						}
+						levelWon();
 					}
 				}
 			}
@@ -601,11 +594,6 @@ function calculatePlayer() {
 
 	if(!player.alive)
 		levelLost();
-
-
-	//context.fillText('player x:'+player.speed.x/32+' y:'+player.pos.y/32, 18, 54);
-	//context.fillText(player.speed.y, 18, 72);
-	//context.fillText((player.pos.x+player.speed_time.x)/32, 18, 72);
 }
 
 var draw_x_offset = 0;
@@ -643,9 +631,6 @@ function drawPlayer() {
 	if((player.pos.x>canvas.width/2) && (player.pos.x<(level_JSON.world.width*32-canvas.width/2)))
 		map.scroll.x = Math.round(player.pos.x-canvas.width/2);
 
-	//context.fillText(dr, 18, 36);
-	//context.fillText(draw_y_offset, 18, 54);
-	//context.fillText((player.pos.y+player.speed_time.y)/32, 18, 54);
 	context.drawImage(player.sprites,player.draw_offset.x,player.draw_offset.y,player.size.x,player.size.y,player.pos.x-map.scroll.x,player.pos.y-map.scroll.y,player.size.x,player.size.y);
 }
 function drawBackground() {
@@ -712,18 +697,27 @@ function loopLevel() {
 }
 
 function levelWon() {
-	player.points = Math.trunc(player.points*10 + clamp(600-(t_now-start_time)/1000,0,600));
-	alert('You won!\nscore: '+player.points);
-	closeEasterEgg();
+	if(!flag_game_won) {
+		flag_game_won = true;
+		player.points = Math.trunc(player.points*10 + clamp(600-(t_now-start_time)/1000,0,600));
+		alert('You won!\nscore: '+player.points);
+		closeEasterEgg();
+	}
 }
 
 function levelLost() {
-	player.points *= 10;
-	alert('Game over\nscore: '+player.points);
-	closeEasterEgg();
+	if(!flag_game_won) {
+		flag_game_won = true;
+		player.points *= 10;
+		alert('Game over\nscore: '+player.points);
+		closeEasterEgg();
+	}
 }
 
 function closeEasterEgg() {
+	if(stand_alone_page)
+		location.reload();
+
 	if(flag_easteregg_running){
 		flag_game_over = true;
 		var about = document.getElementById("about");

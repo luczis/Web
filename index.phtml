@@ -334,7 +334,9 @@
 						</div>
 						<div id="institutions">
 							<h3 class="section_title"><?php $position="institutions"; include "php/getBody.php"; ?></h3>
-							<div><i><?php echo parse_ini_file("base.ini",true)["about"]["inst_pos".$postLang][0]?></i><br><?php echo parse_ini_file("base.ini",true)["about"]["inst_name".$postLang][0]?></br></div>
+							<div><i><?php echo parse_ini_file("base.ini",true)["about"]["inst_pos".$postLang][0]?></i> <b>[ <?php echo parse_ini_file("base.ini",true)["about"]["inst_time".$postLang][0]?> ]</b><br><?php echo parse_ini_file("base.ini",true)["about"]["inst_name".$postLang][0]?></br></div>
+							<br/>
+							<div><i><?php echo parse_ini_file("base.ini",true)["about"]["inst_pos".$postLang][1]?></i> <b>[ <?php echo parse_ini_file("base.ini",true)["about"]["inst_time".$postLang][1]?> ]</b><br><?php echo parse_ini_file("base.ini",true)["about"]["inst_name".$postLang][1]?></br></div>
 						</div>
 					</div>
 				</div>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- Website desenvolvido e mantido por Lucas Zischler :) -->
+<html lang="pt_br" style="scroll-behavior:smooth">
+	<head>
+		<?php 
+			$lang=$_GET["lang"];
+			$postnum=$_GET["postnum"];
+			$pastGET="?";
+			if(isset($lang)) {
+				if(!(strcmp($lang,"en_us") or strcmp($lang,"pt_br"))) {
+					$lang="pt_br";
+				}
+				if($lang !== "pt_br") {
+					$postLang= "." . $lang;
+				}
+				$langGET= "&lang=" . $lang;
+				$pastGET=$pastGET . "&lang=" . $lang;
+			}
+			if(isset($postnum)) {
+				$postnum = 0;
+				$pastGET=$pastGET . "&postnum=" . $postnum;
+			}
+		?>
+		<base href="index.phtml">
+		<meta charset="UTF-8">
+		<title>Lucas Zischler: <?php $position="title"; include "php/getHead.php"; ?></title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta name="author" content="Lucas Zischler">
+		<meta name="description" content="Portifolio do Lucas Zischler, estudante de Engenharia Elétrica pela Universidade Tecnológica Federal do Paraná">	
+		<meta name"keywords" content="Lucas Zischler, Engenharia Elétrica, UTFPR, Portifolio, Site pessoal">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="images/favicon/favicon.svg">
+		<link rel="alternate icon" href="images/favicon/favicon.png">
+		<script src="js/easter_egg.js"></script>
+	</head>
+	<body>
+	<main>
+		<header>
+			<div id="top_bar">
+				<div id="navigation">
+					<div><a class="nav_button" href="index.phtml?<?php echo $langGET; ?>"><b><?php $position="home"; include "php/getHead.php"; ?></b></a></div>
+					<div> </div>
+					<div> </div>
+					<div> </div>
+					<div> </div>
+					<div> </div>
+					<div><?php $position="lang"; include "php/getHead.php"; ?>:</div>	
+					<div id="idiomas">
+						<div><a href="post.phtml?lang=en_us<?php echo "&postnum=" . $postnum; ?>" class="en_us_icon lang_icon"></a></div>
+						<div><a href="post.phtml?lang=pt_br<?php echo "&postnum=" . $postnum; ?>" class="pt_br_icon lang_icon"></a></div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<div class="linkable" id="postpage">
+				<div id="postpage_box">
+					<script>
+						stand_alone_page = true;
+						window.onload = setupGame;
+					</script>
+					<canvas id="easter_egg_canvas" width="800" height="640" style="display: block; margin: 1em auto 1em auto; background: #FFF;"></canvas>
+				</div>
+			</div>
+
+			<div id="copyleft">
+				Copyleft &#127279; 2020 Lucas Zischler	
+				<p><?php $position="copyleft-name"; include "php/getBody.php"; ?>, 2020</p>
+				<p><?php $position="copyleft-notice"; include "php/getBody.php"; ?></p>
+			</div>
+		</main>
+	</body>
+
+</html>

@@ -305,6 +305,7 @@ div.linkable::before {
 }
 /*----POSTPAGE----*/
 #postpage {
+	border-radius: 1em;
 	padding: 1em 1em 1em 1em;
 	margin: 1em var(--side-margin) 1em var(--side-margin);
 	font-family: Helvetica, monospace;
